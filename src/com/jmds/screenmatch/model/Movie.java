@@ -1,62 +1,20 @@
 package com.jmds.screenmatch.model;
 
-public class Movie {
-    private String name;
-    private int releaseYear;
-    private boolean inPlan;
-    private double sumRating;
-    private int quantityRating;
-    private int durationMinutes;
+import com.jmds.screenmatch.calculator.Evaluable;
 
-    public String getName() {
-        return name;
+public class Movie extends Title implements Evaluable {
+    private String director;
+
+    public String getDirector() {
+        return director;
     }
 
-    public int getReleaseYear() {
-        return releaseYear;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
-    public boolean isInPlan() {
-        return inPlan;
-    }
-
-    public int getDurationMinutes() {
-        return durationMinutes;
-    }
-
-    public int getQuantityRating() {
-        return quantityRating;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDurationMinutes(int durationMinutes) {
-        this.durationMinutes = durationMinutes;
-    }
-
-    public void setInPlan(boolean inPlan) {
-        this.inPlan = inPlan;
-    }
-
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
-    }
-
-    public void showData(){
-        System.out.println("Name: " + name);
-        System.out.println("Release year: " + releaseYear);
-        System.out.println("Duration: " + durationMinutes + " minutes");
-        System.out.println("Is available: " + inPlan);
-    }
-
-    public void rate(double newRating){
-        sumRating += newRating;
-        quantityRating += 1;
-    }
-
-    public double getAverageRate(){
-        return sumRating / quantityRating;
+    @Override
+    public int getRating() {
+        return (int) getAverageRate()/2;
     }
 }
